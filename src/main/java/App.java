@@ -1,3 +1,4 @@
+import com.lv.repository.SearchResultRepository;
 import com.lv.view.SearchResultView;
 
 /*
@@ -5,7 +6,7 @@ import com.lv.view.SearchResultView;
  */
 public class App {
     public static void main(String[] args) {
-        String output = new SearchResultView().load();
+        String output = new SearchResultView(new SearchResultRepository()).load();
         System.out.println(output);
     }
 }
