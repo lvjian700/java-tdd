@@ -17,7 +17,7 @@ public class SearchResultViewTest {
     @Test
     public void test_show_search_result_view_with_data() {
         SearchResultRepository repository = mock(SearchResultRepository.class);
-        when(repository.list()).thenReturn(List.of(new SearchResult()));
+        when(repository.list()).thenReturn(List.of(new SearchResult("SRS")));
 
         String output = new SearchResultView(repository).load();
         assertThat(output).isEqualTo("SRS - show listings");
