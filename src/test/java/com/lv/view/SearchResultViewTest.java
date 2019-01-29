@@ -1,6 +1,7 @@
 package com.lv.view;
 
 import com.lv.datasource.exception.DatasourceException;
+import com.lv.model.SearchResult;
 import com.lv.repository.SearchResultRepository;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class SearchResultViewTest {
     @Test
     public void test_show_search_result_view_with_data() {
         SearchResultRepository repository = mock(SearchResultRepository.class);
-        when(repository.list()).thenReturn(List.of("123"));
+        when(repository.list()).thenReturn(List.of(new SearchResult()));
 
         String output = new SearchResultView(repository).load();
         assertThat(output).isEqualTo("SRS - show listings");
@@ -25,7 +26,7 @@ public class SearchResultViewTest {
     @Test
     public void test_show_search_result_view_without_data() {
         SearchResultRepository repository = mock(SearchResultRepository.class);
-        when(repository.list()).thenReturn(new ArrayList());
+        when(repository.list()).thenReturn(new ArrayList<SearchResult>());
 
         String output = new SearchResultView(repository).load();
         assertThat(output).isEqualTo("SRS - Listing not found");
