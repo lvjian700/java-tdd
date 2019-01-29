@@ -12,10 +12,14 @@ public class SearchResultView {
     }
 
     public String load() {
-        List searchResults = repository.list();
-        if (searchResults.isEmpty()) {
-            return "SRS - Listing not found";
+        try {
+            List searchResults = repository.list();
+            if (searchResults.isEmpty()) {
+                return "SRS - Listing not found";
+            }
+            return "SRS - show listings";
+        } catch(Exception e) {
+            return "SRS - Something went wrong";
         }
-        return "SRS - show listings";
     }
 }
